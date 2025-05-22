@@ -22,7 +22,7 @@ apt install -y certbot python3-certbot-nginx
 
 # Configurar NGINX para usar config personalizada
 rm /etc/nginx/sites-enabled/default
-ln -s ~/monitorapramim-docker/nginx/default.conf /etc/nginx/sites-enabled/monitorapramim.conf
+ln -s /root/monitorapramim-docker/nginx/default.conf /etc/nginx/sites-enabled/monitorapramim.conf
 systemctl restart nginx
 
 # Ativar UFW
@@ -30,10 +30,8 @@ ufw allow OpenSSH
 ufw allow 'Nginx Full'
 ufw --force enable
 
-# Clonar o repositório
-cd ~
-git clone git@github.com:drafenous/monitorapramim-docker.git
-cd monitorapramim-docker
+# Entra no repositório raiz
+cd ~/monitorapramim-docker
 
 # Clonar dependências internas
 git clone git@github.com:drafenous/monitorapramim-frontend.git frontend
